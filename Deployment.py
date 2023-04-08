@@ -62,7 +62,7 @@ def store(your_choice):
         
 
 
-menu = ["Train a model", "Identification", "Authentication"]
+menu = ["Train a model", "Identification"]
 choice = st.sidebar.selectbox("Select Option", menu)
 
 
