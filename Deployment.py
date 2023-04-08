@@ -31,14 +31,38 @@ def store(your_choice):
         ecg_json = json.load(data_file)
     
     if your_choice == 'authentication':
-        response = requests.post(authentication_URL+'/store', json=ecg_json, timeout=120)
+        try:
+            response = requests.post(authentication_URL+'/store', json=ecg_json, timeout=120)
+            st.text("Storing Done ...")
+            return response
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
+                        
     else:
-        response = requests.post(identification_URL+'/store', json=ecg_json, timeout=120)
+        try:
+            response = requests.post(identification_URL+'/store', json=ecg_json, timeout=120)
+            st.text("Storing Done ...")
+            return response
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
+
     
-    return response
+        
 
 
-menu = ["Train a model", "Identification"]
+menu = ["Train a model", "Identification", "Authentication"]
 choice = st.sidebar.selectbox("Select Option", menu)
 
 
@@ -50,20 +74,45 @@ if choice == 'Train a model':
     model_name = st.text_input('Model Name')
     
     if st.button('Store'):
-        response = store('identification')
-        st.text("Storing Done ...")
+        try:
+            response = store('identification')
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
     
     if st.button('Train'):
-        response = requests.get(identification_URL+'/train', timeout=120)
-        st.text('Training Done ...')
-        st.text(response.json()['Performance'])
+        try:
+            response = requests.get(identification_URL+'/train', timeout=120)
+            st.text('Training Done ...')
+            st.text(response.json()['Performance'])
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
         
         
     if st.button('Save model'):
         model_name_input = {'Model Name':model_name}
-        response = requests.post(identification_URL+'/save_model', json=model_name_input, timeout=120)
-        st.text('Saved Successfully ...')
-        
+        try:
+            response = requests.post(identification_URL+'/save_model', json=model_name_input, timeout=120)
+            st.text('Saved Successfully ...')
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
     
         
         
@@ -81,19 +130,42 @@ elif choice == 'Identification':
         with open('json_data.json') as data_file:
             ecg_json = json.load(data_file)
 
-        response = requests.post(identification_URL, json=ecg_json, timeout=120)
-        st.text("Done ...")
-
+        try:
+            response = requests.post(identification_URL, json=ecg_json, timeout=120)
+            st.text("Done ...")
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
 
     if st.button('Load model'):
         model_name_input = {'Model Name':model_name}
-        response = requests.post(identification_URL+'/load_model', json=model_name_input, timeout=120)
-        st.text("Loaded Successfully ...")
-
+        
+        try:
+            response = requests.post(identification_URL+'/load_model', json=model_name_input, timeout=120)
+            st.text("Loaded Successfully ...")
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
 
     if st.button('Get'):
-        response = requests.get(identification_URL, timeout=120)
-        st.text(response.json())
-
-
-
+        try:
+            response = requests.get(identification_URL, timeout=120)
+            st.text(response.json())
+        except requests.exceptions.ConnectionError:
+            st.write('Connection Error...')
+        except requests.exceptions.HTTPError:
+            st.write('HTTP Error...')
+        except requests.exceptions.ReadTimeout:
+            st.write('Read Timeout Error...')
+        except requests.exceptions.RequestException:
+            st.write('Request Exception Error...')
