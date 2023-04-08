@@ -736,36 +736,33 @@ def convert_json_dict(ecg_json):
     return ecg_df
 
 
-'''
-# @app.errorhandler(400)
-# def handle_400_error(_error):
-#     return make_response(jsonify({'error': 'Bad Request'}), 400)
+@app.errorhandler(400)
+def handle_400_error(_error):
+    return make_response(jsonify({'error': 'Bad Request'}), 400)
 
-# @app.errorhandler(401)
-# def handle_401_error(_error):
-#     return make_response(jsonify({'error': 'Unauthorized'}), 401)
+@app.errorhandler(401)
+def handle_401_error(_error):
+    return make_response(jsonify({'error': 'Unauthorized'}), 401)
 
-# @app.errorhandler(403)
-# def handle_403_error(_error):
-#     return make_response(jsonify({'error': 'Forbidden'}), 403)
+@app.errorhandler(403)
+def handle_403_error(_error):
+    return make_response(jsonify({'error': 'Forbidden'}), 403)
 
-# @app.errorhandler(404)
-# def handle_404_error(_error):
-#     return make_response(jsonify({'error': 'Not Found'}), 404)
+@app.errorhandler(404)
+def handle_404_error(_error):
+    return make_response(jsonify({'error': 'Not Found'}), 404)
 
-# @app.errorhandler(408)
-# def handle_408_error(_error):
-#     return make_response(jsonify({'error': 'Request Timeout'}), 408)
+@app.errorhandler(408)
+def handle_408_error(_error):
+    return make_response(jsonify({'error': 'Request Timeout'}), 408)
 
-# @app.errorhandler(500)
-# def handle_500_error(_error):
-#     return make_response(jsonify({'error': 'Internal Server Error'}), 500)
+@app.errorhandler(500)
+def handle_500_error(_error):
+    return make_response(jsonify({'error': 'Internal Server Error'}), 500)
 
-# @app.errorhandler(504)
-# def handle_504_error(_error):
-#     return make_response(jsonify({'error': 'Gateway Timeout'}), 504)
-
-'''
+@app.errorhandler(504)
+def handle_504_error(_error):
+    return make_response(jsonify({'error': 'Gateway Timeout'}), 504)
 
 
 '''
