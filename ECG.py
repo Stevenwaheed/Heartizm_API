@@ -482,7 +482,7 @@ class sql_ecg():
         elif table == 'Identification_ECG_Features':
             df = pd.DataFrame(columns= cols + ['Person'], data=fetched_data)
         
-        elif table == 'Authentication_ECG_Features' or 'Fake_Person':
+        elif table == 'Authentication_ECG_Features' or table == 'Fake_Person':
             df = pd.DataFrame(columns= cols + ['label'], data=fetched_data)
         
         return df
@@ -579,94 +579,6 @@ class sql_ecg():
         
         connection.commit()
         
-        cursor.execute('''
-                    CREATE TABLE IF NOT EXISTS Authentication_ECG_Features(
-                        PR_Distances NUMERIC,
-                        PR_Slope NUMERIC,
-                        PR_Amplitude NUMERIC,
-                        
-                        PQ_Distances NUMERIC,
-                        PQ_Slope NUMERIC,
-                        PQ_Amplitude NUMERIC,
-                        
-                        QS_Distances NUMERIC,
-                        QS_Slope NUMERIC,
-                        QS_Amplitude NUMERIC,
-                        
-                        ST_Distances NUMERIC,
-                        ST_Slope NUMERIC,
-                        ST_Amplitude NUMERIC,
-                        
-                        RT_Distances NUMERIC,
-                        RT_Slope NUMERIC,
-                        RT_Amplitude NUMERIC,
-                        
-                        PS_Amplitude NUMERIC,
-                        PT_Amplitude NUMERIC,
-                        TQ_Amplitude NUMERIC,
-                        QR_Amplitude NUMERIC,
-                        RS_Amplitude NUMERIC,
-                        
-                        QR_Interval NUMERIC,
-                        RS_Interval NUMERIC,
-                        PQ_Interval NUMERIC,
-                        QS_Interval NUMERIC,
-                        PS_Interval NUMERIC,
-                        PR_Interval NUMERIC,
-                        ST_Interval NUMERIC,
-                        QT_Interval NUMERIC,
-                        RT_Interval NUMERIC,
-                        PT_Interval NUMERIC,
-                        Person_ID TEXT
-                    )
-                    ''')
-        
-        connection.commit()
-        
-        cursor.execute('''
-                    CREATE TABLE IF NOT EXISTS Fake_Person(
-                        PR_Distances NUMERIC,
-                        PR_Slope NUMERIC,
-                        PR_Amplitude NUMERIC,
-                        
-                        PQ_Distances NUMERIC,
-                        PQ_Slope NUMERIC,
-                        PQ_Amplitude NUMERIC,
-                        
-                        QS_Distances NUMERIC,
-                        QS_Slope NUMERIC,
-                        QS_Amplitude NUMERIC,
-                        
-                        ST_Distances NUMERIC,
-                        ST_Slope NUMERIC,
-                        ST_Amplitude NUMERIC,
-                        
-                        RT_Distances NUMERIC,
-                        RT_Slope NUMERIC,
-                        RT_Amplitude NUMERIC,
-                        
-                        PS_Amplitude NUMERIC,
-                        PT_Amplitude NUMERIC,
-                        TQ_Amplitude NUMERIC,
-                        QR_Amplitude NUMERIC,
-                        RS_Amplitude NUMERIC,
-                        
-                        QR_Interval NUMERIC,
-                        RS_Interval NUMERIC,
-                        PQ_Interval NUMERIC,
-                        QS_Interval NUMERIC,
-                        PS_Interval NUMERIC,
-                        PR_Interval NUMERIC,
-                        ST_Interval NUMERIC,
-                        QT_Interval NUMERIC,
-                        RT_Interval NUMERIC,
-                        PT_Interval NUMERIC,
-                        label INT
-                    )
-                    ''')
-        
-        connection.commit()
-
         connection.close()
 
 
