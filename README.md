@@ -23,7 +23,7 @@ Here're some of the project's best features:
 <p>1. Clone the repository</p>
 
 ```
-git clone "https://github.com/Stevenwaheed/Flutter-Flask-Authentication.git"
+git clone "https://github.com/Stevenwaheed/Heartizm_API.git"
 ```
 
 <p>2. Install npm modules</p>
