@@ -4,6 +4,9 @@
 
 <h2>🚀 Demo</h2>
 
+- Enrollment: Each user goes through an enrollment process where the ecg sensor captures and stores their unique ECG patterns. This establishes a baseline biometric template for each individual, used for subsequent authentications.
+- Authentication: During authentication, the Nymi band captures a real-time ECG signal from the user and compares it with the enrolled template. If the patterns match within a certain threshold, the system confirms the user's identity.
+
 [Streamlit Website prototype Video](https://drive.google.com/file/d/14tA3XpfSSNZMkiGq7X63xCwji1KOntRT/view?usp=sharing)
 
   
